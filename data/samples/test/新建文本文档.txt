@@ -1,0 +1,149 @@
+TrackMate v6.0.1 started on:
+星期二, 16 三月 2021 14:41:29
+Please note that TrackMate is available through Fiji, and is based on a publication. If you use it successfully for your research please be so kind to cite our work:
+Tinevez, JY.; Perry, N. & Schindelin, J. et al. (2017), 'TrackMate: An open and extensible platform for single-particle tracking.', Methods 115: 80-90, PMID 27713081.
+https://www.ncbi.nlm.nih.gov/pubmed/27713081
+https://scholar.google.com/scholar?cluster=9846627681021220605
+Image data:
+For the image named: test.
+Not matching any file.
+Geometry:
+  X =    0 -  287, dx = 1.00000
+  Y =    0 -  195, dy = 1.00000
+  Z =    0 -    0, dz = 1.00000
+  T =    0 -   74, dt = 1.00000
+Spot feature analyzers:
+ - Manual spot color analyzer provides: Spot color; is manual.
+ - Spot descriptive statistics provides: Mean, Median, Min, Max, Total int., Stdev.
+ - Spot radius estimator provides: Diam.
+ - Spot contrast and SNR provides: Constrast, SNR.
+Edge feature analyzers:
+ - Edge target provides: Source ID, Target ID, Cost.
+ - Edge mean location provides: T, X, Y, Z.
+ - Edge velocity provides: V, D.
+ - Manual edge color analyzer provides: Edge color; is manual.
+Track feature analyzers:
+ - Branching analyzer provides: N spots, Gaps, Longest gap, Splits, Merges, Complex.
+ - Track duration provides: Duration, T start, T stop, Displacement.
+ - Track index provides: Index, ID.
+ - Track location provides: X, Y, Z.
+ - Velocity provides: Mean V, Max V, Min V, Median V, V std.
+ - TRACK_SPOT_QUALITY provides: Mean Q, Max Q, Min Q, Median Q, Q std.
+Computing spot features.
+Computation done in 3 ms.
+Computing edge features:
+  - Edge target in 0 ms.
+  - Edge mean location in 0 ms.
+  - Edge velocity in 0 ms.
+Computation done in 0 ms.
+Computing track features:
+  - Branching analyzer in 0 ms.
+  - Track duration in 0 ms.
+  - Track index in 0 ms.
+  - Track location in 0 ms.
+  - Velocity in 0 ms.
+  - TRACK_SPOT_QUALITY in 0 ms.
+Computation done in 0 ms.
+Starting detection using LoG detector
+with settings:
+  - target channel: 1
+  - threshold: 0.5
+  - do median filtering: false
+  - radius: 15.0
+  - do subpixel localization: true
+Starting detection process using 12 threads.
+Detection processes 12 frames simultaneously and allocates 1 thread per frame.
+Found 590 spots.
+Detection done in 0.2 s.
+Computing spot quality histogram...
+Histogram calculated in 0.0 s.
+Initial thresholding with a quality threshold above 0.8 ...
+Starting initial filtering process.
+Retained 260 spots out of 590.
+Calculating spot features...
+Computing spot features.
+Computation done in 14 ms.
+Calculating features done in 0.0 s.
+Initial thresholding with a quality threshold above 0.8 ...
+Starting initial filtering process.
+Retained 260 spots out of 260.
+Calculating spot features...
+Computing spot features.
+Computation done in 15 ms.
+Calculating features done in 0.0 s.
+Image data:
+For the image named: test.
+Not matching any file.
+Geometry:
+  X =    0 -  287, dx = 1.00000
+  Y =    0 -  195, dy = 1.00000
+  Z =    0 -    0, dz = 1.00000
+  T =    0 -   74, dt = 1.00000
+Spot feature analyzers:
+ - Manual spot color analyzer provides: Spot color; is manual.
+ - Spot descriptive statistics provides: Mean, Median, Min, Max, Total int., Stdev.
+ - Spot radius estimator provides: Diam.
+ - Spot contrast and SNR provides: Constrast, SNR.
+Edge feature analyzers:
+ - Edge target provides: Source ID, Target ID, Cost.
+ - Edge mean location provides: T, X, Y, Z.
+ - Edge velocity provides: V, D.
+ - Manual edge color analyzer provides: Edge color; is manual.
+Track feature analyzers:
+ - Branching analyzer provides: N spots, Gaps, Longest gap, Splits, Merges, Complex.
+ - Track duration provides: Duration, T start, T stop, Displacement.
+ - Track index provides: Index, ID.
+ - Track location provides: X, Y, Z.
+ - Velocity provides: Mean V, Max V, Min V, Median V, V std.
+ - TRACK_SPOT_QUALITY provides: Mean Q, Max Q, Min Q, Median Q, Q std.
+Computing spot features.
+Computation done in 2 ms.
+Computing edge features:
+  - Edge target in 0 ms.
+  - Edge mean location in 0 ms.
+  - Edge velocity in 0 ms.
+Computation done in 1 ms.
+Computing track features:
+  - Branching analyzer in 0 ms.
+  - Track duration in 0 ms.
+  - Track index in 0 ms.
+  - Track location in 0 ms.
+  - Velocity in 0 ms.
+  - TRACK_SPOT_QUALITY in 0 ms.
+Computation done in 0 ms.
+Starting detection using LoG detector
+with settings:
+  - target channel: 1
+  - threshold: 0.25
+  - do median filtering: false
+  - radius: 15.0
+  - do subpixel localization: true
+Starting detection process using 12 threads.
+Detection processes 12 frames simultaneously and allocates 1 thread per frame.
+Found 707 spots.
+Detection done in 0.3 s.
+Computing spot quality histogram...
+Histogram calculated in 0.0 s.
+Initial thresholding with a quality threshold above -0.0 ...
+Starting initial filtering process.
+Retained 707 spots out of 707.
+Calculating spot features...
+Computing spot features.
+Computation done in 40 ms.
+Calculating features done in 0.0 s.
+Performing spot filtering on the following features:
+No feature threshold set, kept the 707 spots.
+Starting tracking using Simple LAP tracker
+with settings:
+  Linking conditions:
+    - max distance: 15.0
+    - no feature penalties
+  Gap-closing conditions:
+    - max distance: 15.0
+    - max frame gap: 2
+    - no feature penalties
+  Track splitting not allowed.
+  Track merging not allowed.
+Starting tracking process.
+Found 12 tracks.
+Tracking done in 0.0 s.

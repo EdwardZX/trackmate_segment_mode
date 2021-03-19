@@ -50,15 +50,15 @@ settings.setFrom(imp)
 settings.detectorFactory = LogDetectorFactory()
 settings.detectorSettings = { 
     'DO_SUBPIXEL_LOCALIZATION' : True,
-    'RADIUS' : 15.,
+    'RADIUS' : 7.,
     'TARGET_CHANNEL' : 1,
     'THRESHOLD' : 0.25,
     'DO_MEDIAN_FILTERING' : False,
 }  
     
 # Configure spot filters - Classical filter on quality
-#filter1 = FeatureFilter('QUALITY', 0, True)
-#settings.addSpotFilter(filter1)
+filter1 = FeatureFilter('QUALITY', 0.5, True) # in higher SNR;
+settings.addSpotFilter(filter1)
 
 # Configure tracker - We want to allow merges and fusions
 #settings.trackerFactory = SparseLAPTrackerFactory()
@@ -66,10 +66,34 @@ settings.trackerFactory = LAPTrackerFactory()
 settings.trackerSettings = LAPUtils.getDefaultLAPSettingsMap() # almost good enough
 settings.trackerSettings['ALLOW_TRACK_SPLITTING'] = True
 settings.trackerSettings['ALLOW_TRACK_MERGING'] = True
+settings.trackerSettings['LINKING_MAX_DISTANCE'] = 30.0
+settings.trackerSettings['GAP_CLOSING_MAX_DISTANCE']=30.0
+settings.trackerSettings['MAX_FRAME_GAP']= 4
 
 
 
+# feature
+spotAnalyzerProvider = SpotAnalyzerProvider()
+for key in spotAnalyzerProvider.getKeys():
+    print( key )
+    settings.addSpotAnalyzerFactory( spotAnalyzerProvider.getFactory( key ) )
+ 
+edgeAnalyzerProvider = EdgeAnalyzerProvider()
+for  key in edgeAnalyzerProvider.getKeys():
+    print( key )
+    settings.addEdgeAnalyzer( edgeAnalyzerProvider.getFactory( key ) )
+ 
+trackAnalyzerProvider = TrackAnalyzerProvider()
+for key in trackAnalyzerProvider.getKeys():
+    print( key )
+    settings.addTrackAnalyzer( trackAnalyzerProvider.getFactory( key ) )
 
+
+
+filter2 = FeatureFilter('TRACK_DISPLACEMENT', 10, True)
+settings.addTrackFilter(filter2)
+
+# processing
 trackmate = TrackMate(model, settings)
 ok = trackmate.checkInput()
 if not ok:

@@ -2,6 +2,7 @@ import sys,os
  
 from ij import IJ
 from ij import WindowManager
+import java.io.File as File
  
 from fiji.plugin.trackmate import Model
 from fiji.plugin.trackmate import Settings
@@ -17,11 +18,14 @@ from fiji.plugin.trackmate.providers import EdgeAnalyzerProvider
 from fiji.plugin.trackmate.providers import TrackAnalyzerProvider
 import fiji.plugin.trackmate.visualization.hyperstack.HyperStackDisplayer as HyperStackDisplayer
 import fiji.plugin.trackmate.features.FeatureFilter as FeatureFilter
+from fiji.plugin.trackmate.action import ExportTracksToXML
+
 
 from ij.plugin import Macro_Runner
 from ij.io import DirectoryChooser  
 
-def track_single_batch():	
+
+def track_single_batch(path,filename):	
 	# Get currently selected image
 	imp = WindowManager.getCurrentImage()
 		# imp = IJ.openImage('https://fiji.sc/samples/FakeTracks.tif')
@@ -118,9 +122,16 @@ def track_single_batch():
 		displayer.refresh()
 	    
 	# Echo results with the logger we set at start:
-		model.getLogger().log(str(model))      
+		model.getLogger().log(str(model))  
+		 
+	save_path = os.path.join(path,'result')	
+	if not os.path.exists(save_path):
+		os.mkdir(save_path,0755)
+	outFile = File(save_path,filename)
+	ExportTracksToXML.export(model, settings, outFile)
+	imp.close()   
 			
-	print 'finished'
+
 
 
 '''
@@ -160,7 +171,14 @@ def run_tracking(path):
         IJ.run("Properties...", "channels=1 slices=1 frames=" \
         + str(slices)+" " +\
 "       pixel_width=1.0000 pixel_height=1.0000 voxel_depth=1.0000");
-        track_single_batch()
+
+        filename = 'exportModel_' + str(start_index)+'-'+\
+        str(start_index+num_batch-1) + '.xml'
+        track_single_batch(path,filename)
+        
+        print("%d / %d " %(i+1, num))
+        
+        
 		
 			
 	

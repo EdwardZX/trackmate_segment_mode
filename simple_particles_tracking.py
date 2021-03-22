@@ -25,6 +25,10 @@ from ij.plugin import Macro_Runner
 from ij.io import DirectoryChooser  
 
 
+'''
+this file is aim to processing the long sequence of images
+'''
+
 def track_single_batch(path,filename):	
 	# Get currently selected image
 	imp = WindowManager.getCurrentImage()

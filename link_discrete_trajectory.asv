@@ -31,7 +31,7 @@ for m = 1:numel(track_set)-1
 end
 %id_link = link_frame(track_set{1},track_set{2},number_batch,number_overlap);
 id_set{m+1} = zeros(size(track_set{m+1})); %
-list_all_trajectory(track_set,id_set,number_batch,number_overlap,x000000)
+list_all_trajectory(track_set,id_set,number_batch,number_overlap)
 %draw_trajectory(track_set{1},id_set)
 
 
@@ -128,20 +128,19 @@ y=id;
 %       a=1;
 %   end
 for ii = s:1:numel(id_set)
-%      if ii == 2 && id ==10
+%     if ii == 6 && id ==29
 %         a=1
-%      end
+%     end
     track_ids  = id_set{ii}; 
     if track_ids(id) == -1
         y = [];
-        break;
+        continue;
     end
     if track_ids(id) > 0 % -1 read ;0 not link
       y = [y,track_ids(id)];
       id_pre = id;
       id = track_ids(id);
-      track_ids(id_pre) = -1;
-      %id_set{ii} = track_ids;% readed
+      track_ids(id_pre) = -1;% readed
       
     else     
       track_ids(id) = -1;
@@ -151,18 +150,13 @@ end
 id_set{ii} = track_ids; %update the id table
 end
 
-function list_all_trajectory(track_set,id_set,number_batch,number_overlap,imp)
+function list_all_trajectory(track_set,id_set,number_batch,number_overlap)
  % -1 readed ;0 not link;others 
  % change the time T
  num = numel(id_set);
-
+ figure
 
 for ii = 1:num
-    if mod(ii,5) == 1
-        figure
-        imshow(imp)
-        hold on
-    end
     for jj = 1:numel(track_set{ii})
         %track_set_temp = track_set{ii};
        A= [];
